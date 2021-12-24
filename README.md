@@ -1,5 +1,6 @@
 # AfricanTowns
 Process
+Process describing at a high level the download and classification of Sentinel data in to towns/not towns
 
 A separate classifier is created for each AOI using the Google buildings data as ground truth.
 
