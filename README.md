@@ -3,6 +3,7 @@ Process
 Process describing at a high level the download and classification of Sentinel data in to towns/not towns
 
 A separate classifier is created for each AOI using the Google buildings data as ground truth. This process uses arcpy, and is partially windows base, but some tools have been run on Linux.
+
 Get AOI
 1. Need a feature class or shapefile with a feature per town, defining the area required. Defining this is outside the scope of this repository
 2. Run GettownExt.py . Inputs are towns fc , and sentinel-2 fc (download from ESA). This creates a csv file with min/max coordinates (WGS84) of a bounding box of each of the extents. TODO - finish the function to automatically get the scene code for each scene. This is the code of the sentinel-2 tile. 
