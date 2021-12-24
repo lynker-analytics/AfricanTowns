@@ -2,11 +2,14 @@
 Process
 Process describing at a high level the download and classification of Sentinel data in to towns/not towns
 
-A separate classifier is created for each AOI using the Google buildings data as ground truth.
+A separate classifier is created for each AOI using the Google buildings data as ground truth. This process uses arcpy, and is partially windows base, but some tools have been run on Linux.
+Get AOI
+1. Need a feature class or shapefile with a feature per town, defining the area required. Defining this is outside the scope of this repository
+2. Run GettownExt.py . Inputs are towns fc , and sentinel-2 fc (download from ESA). This creates a csv file with min/max coordinates (WGS84) of a bounding box of each of the extents. TODO - finish the function to automatically get the scene code for each scene. This is the code of the sentinel-2 tile. 
 
 Sentinel processing
 
-1. download_tiles script downloads data, and clips this to a square AOI. Note that script selects for clear areas for the AOI. Output is preview tiles (low res), individual bands for each date. Tiles are selected with less than 5% cloud, or blank. Due to issues of Sentinel cloud algorithm in Africa, these could actually be clear when 5% cloud
+1. download_tiles2.py script downloads data, and clips this to a square AOI. Note that script selects for clear areas for the AOI. Output is preview tiles (low res), individual bands for each date. Tiles are selected with less than 5% cloud, or blank. Due to issues of Sentinel cloud algorithm in Africa, these could actually be clear when 5% cloud
 
 2. Run script 'istownclear.py'. This creates a csv of all the clear tiles + date, and copies the relevant preview files to a directory for QA
 
